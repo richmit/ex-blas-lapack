@@ -9,6 +9,8 @@
 #            
 #            
 
+.PHONY: all clean
+
 # Fortran + Blas
 TARGBF = blas1F blas2F blas3F
 # C + Blas
@@ -27,21 +29,18 @@ CFLAGS   = -Wall
 # LAPACK/BLAS compile/link options for generic linux:
 BL_LIB_PATH =
 BL_LIB_NAME = -lblas
-BL_INC_PATH = -I /mingw64/include/OpenBLAS
+BL_INC_PATH = 
 LP_LIB_PATH =
 LP_LIB_NAME = -llapack
-LP_INC_PATH = -I/usr/include/atlas
-
-# LAPACK/BLAS compile/link options for OSX:
-# APLKRZ  = -framework Accelerate 
+LP_INC_PATH = 
 
 # LAPACK/BLAS compile/link options for MSYS2 using OpenBLAS on MS Windows:
 # BL_LIB_PATH =
 # BL_LIB_NAME = -lopenblas
-# BL_INC_PATH = -I /mingw64/include/OpenBLAS
+# BL_INC_PATH = -I/mingw64/include/OpenBLAS
 # LP_LIB_PATH =
 # LP_LIB_NAME = -llapack
-# LP_INC_PATH = -I/usr/include/atlas
+# LP_INC_PATH = 
 
 # You will need a Fortran compiler for the TARG*F targets.
 #TARGETS = $(TARGBC) $(TARGBF) $(TARGLF) $(TARGLC) 
@@ -84,4 +83,4 @@ triSlvF : triSlvF.f blaio.f
 	$(FC) $(FFLAGS) triSlvF.f blaio.f $(LP_LIB_NAME) $(BL_LIB_NAME) -o triSlvF
 
 clean :
-	rm -rf a.out *~ *.bak $(TARGBF) $(TARGBC) $(TARGLF) $(TARGLC)
+	rm -rf *.exe *.EXE a.out *~ *.bak $(TARGBF) $(TARGBC) $(TARGLF) $(TARGLC)
