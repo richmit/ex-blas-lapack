@@ -1,6 +1,6 @@
 C -*- Mode:Fortran; Coding:us-ascii-unix; fill-column:72 -*-
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-C  @file      ssteqrF.f
+C  @file      symEigF.f
 C  @Author    Mitch Richling<https://www.mitchr.me/>
 C  @Copyright Copyright 1996 by Mitch Richling.  All rights reserved.
 C  @breif     Simple example illustrating sgesv from lapack.@EOL
@@ -12,7 +12,7 @@ C  eigenvalues of a symmetric matrix with LAPACK.
 
 CC----------------------------------------------------------------------
 
-      program symeg
+      program symEigF
  
       implicit none
 

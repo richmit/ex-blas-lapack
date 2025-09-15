@@ -1,6 +1,6 @@
 C -*- Mode:Fortran; Coding:us-ascii-unix; fill-column:72 -*-
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-C  @file      triSolve.f
+C  @file      slvSysF.f
 C  @Author    Mitch Richling<https://www.mitchr.me/>
 C  @Copyright Copyright 1996 by Mitch Richling.  All rights reserved.
 C  @breif     Simple example illustrating SGESV from LAPACK.@EOL
@@ -14,7 +14,7 @@ C
 
 CC----------------------------------------------------------------------
 
-      program sgesvf
+      program slvSysF
  
       implicit none
 

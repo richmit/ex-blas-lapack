@@ -1,6 +1,6 @@
 C -*- Mode:Fortran; Coding:us-ascii-unix; fill-column:72 -*-
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
-C  @file      triSolve.f
+C  @file      triSlvF.f
 C  @Author    Mitch Richling<https://www.mitchr.me/>
 C  @Copyright Copyright 2006 by Mitch Richling.  All rights reserved.
 C  @breif     Simple example illustrating strsv from BLAS.@EOL
@@ -15,7 +15,7 @@ C  diagonal.
 
 CC----------------------------------------------------------------------
 
-      program trislv
+      program triSlvF
 
       implicit none
 
