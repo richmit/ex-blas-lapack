@@ -65,8 +65,10 @@ int main(int argc, char **argv) {
   printMatrix(CblasColMajor, 4, 4, a, 15, 10, NULL, NULL, NULL, NULL, NULL, "a=");
   printMatrix(CblasColMajor, 1, 4, b, 15, 10, NULL, NULL, NULL, NULL, NULL, "b=");
 
-  //inf = LAPACKE_dgesv(LAPACK_COL_MAJOR, n, nrhs, a, lda, ipiv, b, ldb);
-   dgesv_(&n, &nrhs, a, &lda, ipiv, b, &ldb, &inf);
+  /* The LAPACKE version of dgesv */
+  inf = LAPACKE_dgesv(LAPACK_COL_MAJOR, n, nrhs, a, lda, ipiv, b, ldb);
+  /* We can use the lapacke header with old clapack code too.  Example: */
+  // dgesv_(&n, &nrhs, a, &lda, ipiv, b, &ldb, &inf);
 
   if(inf == 0) {
     printf("Successful Solution\n");
