@@ -3,7 +3,7 @@
 ##
 # @file      makefile
 # @author    Mitch Richling http://www.mitchr.me/
-# @brief     Build fortran examples.@EOL
+# @brief     Build fortran 77 examples.@EOL
 # @std       GNUmake
 # @see       https://github.com/richmit/ex-blas-lapack/
 # @copyright 
