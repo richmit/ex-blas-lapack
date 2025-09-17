@@ -1,0 +1,5 @@
+*.exe
+*.o
+*.obj
+a.out
+*.mod
