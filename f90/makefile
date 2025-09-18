@@ -60,16 +60,16 @@ TARGETS = blas1 blas2 blas3 slvSys symEig triSlv genEig
 include ../make.mk
 
 blas_kinds.mod blas_kinds.o &: blas_kinds.f90 
-	gfortran -c blas_kinds.f90 
+	$(FC) $(FFLAGS) -c blas_kinds.f90 
 
 blas_ifaces.mod blas_ifaces.o &: blas_ifaces.f90 blas_kinds.mod blas_kinds.o
-	gfortran -c blas_ifaces.f90 
+	$(FC) $(FFLAGS) -c blas_ifaces.f90 
 
 lapack_ifaces.mod lapack_ifaces.o &: lapack_ifaces.f90 blas_kinds.mod blas_kinds.o
-	gfortran -c lapack_ifaces.f90 
+	$(FC) $(FFLAGS) -c lapack_ifaces.f90 
 
 blaio.mod blaio.o &: blaio.f90 blas_kinds.mod blas_kinds.o
-	gfortran -c blaio.f90 
+	$(FC) $(FFLAGS) -c blaio.f90 
 
 blas1 : blas1.f90 blaio.o blas_ifaces.o blas_kinds.o
 	$(FC) $(FFLAGS) blas1.f90 blaio.f90 $(BL_LIB_NAME) -o blas1
