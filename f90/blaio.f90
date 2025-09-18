@@ -68,7 +68,7 @@ contains
     prec = 3
     if (present(prec_o))  prec  = prec_o
     ! Build format string & write vector
-    write (fst, '("(1x,a",i0,",a,a,",i0,"f",i0,"."i0,",1x,a,a)")') len(tag), size(a, 1), wide, prec
+    write (fst, '("(1x,a",i0,",a,a,",i0,"f",i0,".",i0,",1x,a,a)")') len(tag), size(a, 1), wide, prec
     write (*, fst) tag, ldel, ldel, a, rdel, rdel
   end subroutine sgeprtv
 
@@ -96,7 +96,7 @@ contains
     prec = 3
     if (present(prec_o))  prec  = prec_o
     ! Build format string & write matrix
-    write (fst, '("(1x,a",i0,",a,a,",i0,"f",i0,"."i0,",1x,a,a)")') len(tag), size(a, 2), wide, prec
+    write (fst, '("(1x,a",i0,",a,a,",i0,"f",i0,".",i0,",1x,a,a)")') len(tag), size(a, 2), wide, prec
     do i=1,size(a, 1)
        if( (i == 1) .and. (i == size(a, 1)) ) then
           write (*, fst) tag, ldel, lidel, a(i, :), ridel, rdel
