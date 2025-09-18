@@ -5,8 +5,11 @@ Example programs in C, modern Fortran, and FORTRAN 77 to get you
 started with the BLAS/CBLAS and LAPACK/CLAPACK/LAPACKE APIs commonly
 used for scientific programming tasks.
 
-You can read a bit more about these examples on my [[https://www.mitchr.me/SS/exampleCode/blas.html][home page]]
+Documentation for these examples may be found on my [[https://www.mitchr.me/SS/exampleCode/blas.html][home page]].
 
 Have fun!
 
 -mitch
+
+
+
