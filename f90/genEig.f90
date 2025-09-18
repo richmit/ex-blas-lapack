@@ -83,13 +83,13 @@ implicit none (type, external)
   if (inf == 0) then
      write (*,*) 'successful eigenvalue computation'
   else if (inf < 0) then
-     write (*,*) 'illegal value at: ', -inf
+     write (*,*) 'Illegal value at: ', -inf
      stop
   else if (inf > 0) then
      write (*,*) 'QR failed to find all eigenvalues.  info: ', -inf
      stop
   else
-     write (*,*) 'unknown result (can''t happen!)'
+     write (*,*) 'Illegal return code'
      stop
   end if
 

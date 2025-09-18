@@ -67,10 +67,10 @@ program symEig
   if (inf == 0) then
      write (*,*) 'successful tridiagonal reduction'
   else if (inf < 0) then
-     write (*,*) 'illegal value at: %d', -inf
+     write (*,*) 'Illegal value at: ', -inf
      stop
   else
-     write (*,*) 'unknown result (can''t happen!)'
+     write (*,*) 'Illegal return code'
      stop
   end if
 
@@ -83,12 +83,12 @@ program symEig
 
   ! Figure out if we found the eigenvalues or not
   if (inf == 0) then
-     write (*,*) 'successful solution'
+     write (*,*) 'Successful solution'
   else if (inf < 0) then
-     write (*,*) 'illegal value at: %d', -inf
+     write (*,*) 'Illegal value at: ', -inf
      stop
   else
-     write (*,*) 'unknown result (can''t happen!)'
+     write (*,*) 'Illegal return code'
      stop
   end if
 

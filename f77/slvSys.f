@@ -76,15 +76,15 @@ C     Compute the solution
 
 C     Figure out if sgesv found a solution or not
       if (inf .eq. 0) then
-         write (*,*) 'successful solution'
+         write (*,*) 'Successful solution'
       else if (inf .lt. 0) then
-         write (*,*) 'illegal value at: %d', -inf
+         write (*,*) 'Illegal value at: ', -inf
          stop
       else if (inf .gt. 0) then
          write (*,*) 'matrix was singular'
          stop
       else
-         write (*,*) 'unknown result (can''t happen!)'
+         write (*,*) 'Illegal return code'
          stop
       end if
 

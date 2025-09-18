@@ -66,7 +66,7 @@ C     Initialize the matrix a
      *       4, 4, 6, 6/
 
 C     Print out the matrix we start with
-      call sgeprt(4, 5, a, 'a=')
+      call sgeprt(4, 4, a, 'a=')
 
       call ssytrd('U', 4, a, 4, d, e, t, tw, 4, inf)
 
@@ -74,27 +74,27 @@ C     Figure out if the tridiagonal transform worked
       if (inf .eq. 0) then
          write (*,*) 'successful tridiagonal reduction'
       else if (inf .lt. 0) then
-         write (*,*) 'illegal value at: %d', -inf
+         write (*,*) 'Illegal value at: ', -inf
          stop
       else
-         write (*,*) 'unknown result (can''t happen!)'
+         write (*,*) 'Illegal return code'
          stop
       end if
 
       call sgeprt(1, 4, d, 'd=')
-      call sgeprt(1, 5, e, 'e=')
+      call sgeprt(1, 3, e, 'e=')
 
 C     Compute the solution
       call ssteqr('N', 4, d, e, z, 1, ew, inf)
 
 C     Figure out if we found the eigenvalues or not
       if (inf .eq. 0) then
-         write (*,*) 'successful solution'
+         write (*,*) 'Successful solution'
       else if (inf .lt. 0) then
-         write (*,*) 'illegal value at: %d', -inf
+         write (*,*) 'Illegal value at: ', -inf
          stop
       else
-         write (*,*) 'unknown result (can''t happen!)'
+         write (*,*) 'Illegal return code'
          stop
       end if
 
