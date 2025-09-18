@@ -1,0 +1,10 @@
+* ~BLAS~ & ~LAPACK~ examples in ~FORTRAN 77~
+
+This code hasn't changed since the mid-90's, and it still works!
+
+I don't expect many people to be writing new code in FORTRAN 77, but
+these examples may help out someone working on an old code base.
+
+Have fun!
+
+-mitch

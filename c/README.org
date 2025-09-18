@@ -1,0 +1,15 @@
+* ~BLAS~ & ~LAPACK~ examples in ~C~
+
+The ~BLAS~ programs illustrate ~CBLAS~ -- a venerable interface to
+~BLAS~ for ~C~-family languages.
+
+The ~LAPACK~ program demonstrates ~LAPACKE~ -- the official ~C~-family
+language interface to LAPACK.
+
+Older ~C~ code may use the older ~CLAPACK~ interface.  ~LAPACKE~
+provides backward compatibility with this interface, and ~slvSys.c~
+has commented out lines demonstrating the older calling method.
+
+Have fun!
+
+-mitch

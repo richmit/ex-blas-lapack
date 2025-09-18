@@ -1,0 +1,22 @@
+* ~BLAS~ & ~LAPACK~ examples in ~Modern Fortran~
+
+I've included modules to help interface with ~BLAS~ & ~LAPACK~:
+ - ~blas_kinds~ ::
+   Constants for ~single~ && ~double~ reals
+ - ~blas_ifaces~ :: 
+   Interface block for the ~BLAS~ routines used
+ - ~lapack_ifaces~ :: 
+   Interface block for the ~LAPACK~ routines used
+
+Modern Fortran ~BLAS~ & ~LAPACK~ Tips:
+ - Always use explicit kind suffixes for real kinds for constants. i.e. ~0.1_dp~
+ - Always use a proper interface for every routine.
+ - Make use of ~RESHAPE~ & ~ORDER~ to initialize matrices in a natural
+   way for your application.
+ - Avoid old-school tricks like passing scalars, sometimes of different
+   types, to array arguments you know won't be used.  Just keep
+   everything clean, easy to read, and type-safe.
+
+Have fun!
+
+-mitch
