@@ -1,6 +1,9 @@
+*~
+.#*
 *.exe
 *.o
 *.obj
 a.out
 *.mod
 README.html
+/f90/ifaces/
