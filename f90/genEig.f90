@@ -3,26 +3,26 @@
 !>
 !! @file      symEig.f90
 !! @author    Mitch Richling http://www.mitchr.me/
-!! @brief     Simple example illustrating dgesv from lapack.@EOL
-!! @keywords  
-!! @std       F90 F95 F2003 F2008 F2018 F2023
+!! @brief     Eigenvalues via dsytrd & dgeev. @EOL
+!! @keywords  blas lapack numerical linear algebra matrix vector netlib
+!! @std       F2023
 !! @see       https://github.com/richmit/ex-blas-lapack/
-!! @copyright 
+!! @copyright
 !!  @parblock
 !!  Copyright (c) 2025, Mitchell Jay Richling <http://www.mitchr.me/> All rights reserved.
-!!  
+!!
 !!  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following
 !!  conditions are met:
-!!  
+!!
 !!  1. Redistributions of source code must retain the above copyright notice, this list of conditions, and the following
 !!     disclaimer.
-!!  
+!!
 !!  2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions, and the following
 !!     disclaimer in the documentation and/or other materials provided with the distribution.
-!!  
+!!
 !!  3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products
 !!     derived from this software without specific prior written permission.
-!!  
+!!
 !!  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
 !!  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
 !!  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
@@ -31,10 +31,6 @@
 !!  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 !!  OF THE POSSIBILITY OF SUCH DAMAGE.
 !!  @endparblock
-!! @filedetails   
-!!
-!!  This little program illustrates the typical way to find the eigenvalues of a symmetric matrix with LAPACK.
-!!
 !.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!.H.E.!!
 
 !----------------------------------------------------------------------------------------------------------------------------------
@@ -42,7 +38,7 @@ program genEig
 
   use blas_kinds,    only: dp
   use lapack_ifaces, only: dgeev
-  use blaio,         only: sgeprt
+  use blaio,         only: dgeprt
 implicit none (type, external)
 
   integer, parameter :: n = 4
@@ -58,7 +54,7 @@ implicit none (type, external)
        &          3.0_dp, 6.0_dp, 5.0_dp, 6.0_dp, &
        &          4.0_dp, 4.0_dp, 6.0_dp, 6.0_dp], shape(a))
   ! Print out the matrix we start with
-  call sgeprt(a, 'a=')
+  call dgeprt(a, 'a=')
 
   ! It is possible to ask dgeev to compute the best size for the WORK array if you can't figure it out beforehand.
   lwork = -1
@@ -67,7 +63,7 @@ implicit none (type, external)
   call dgeev('N',  'N',  n, a, n,   wr, wi, vl, n,   vr, n,   work, lwork, inf)
   if(inf /= 0) then
      print *, "Error during workspace query in dgeev. info: ", inf
-     error stop 
+     error stop
   end if
 
   ! The optimal size is in work(1)
@@ -94,7 +90,7 @@ implicit none (type, external)
   end if
 
   write (*,*) 'The Eigenvalues:'
-  call sgeprt(wr, 'wr=')
-  call sgeprt(wi, 'wi=')
+  call dgeprt(wr, 'wr=')
+  call dgeprt(wi, 'wi=')
 
 end program genEig

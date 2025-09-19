@@ -2,8 +2,8 @@ C -*- Mode:Fortran; Coding:us-ascii-unix; fill-column:72 -*-
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC.H.S.CC
 C @file      symEig.f
 C @author    Mitch Richling http://www.mitchr.me/
-C @brief     Simple example illustrating sgesv from lapack.@EOL
-C @keywords  blas linear algebra netlib
+C @brief     Eigenvalues of a symmetric matrix via ssytrd & ssteqr. @EOL
+C @keywords  blas lapack numerical linear algebra matrix vector netlib
 C @std       F77 MIL-STD-1753
 C @see       https://github.com/richmit/ex-blas-lapack/
 C @copyright
@@ -39,11 +39,6 @@ C  STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 C  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 C  OF THE POSSIBILITY OF SUCH DAMAGE.
 C  @endparblock
-C @filedetails
-C
-C  This little program illustrates the typical way to find the
-C  eigenvalues of a symmetric matrix with LAPACK.
-C
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC.H.E.CC
 
 C-----------------------------------------------------------------------
@@ -51,7 +46,7 @@ C-----------------------------------------------------------------------
 
       implicit none
 
-      real*4 a(4,4), d(4), e(3), t(3), ew(4)
+      real a(4,4), d(4), e(3), t(3), ew(4)
       integer inf, tw(8), z
 
 C     Externals from the blaio library
@@ -60,15 +55,17 @@ C     Externals from the LAPACK library
       external ssteqr, ssytrd
 
 C     Initialize the matrix a
-      data a/1, 2, 3, 4,
-     *       2, 2, 6, 4,
-     *       3, 6, 5, 6,
-     *       4, 4, 6, 6/
+      data a/1.0, 2.0, 3.0, 4.0,
+     *       2.0, 2.0, 6.0, 4.0,
+     *       3.0, 6.0, 5.0, 6.0,
+     *       4.0, 4.0, 6.0, 6.0/
 
 C     Print out the matrix we start with
       call sgeprt(4, 4, a, 'a=')
 
-      call ssytrd('U', 4, a, 4, d, e, t, tw, 4, inf)
+C     Transform to symmetric tridiagonal form via similarity transforms
+C                 uplo, n, a, lda, d, e, tau, work, lwork, info
+      call ssytrd('U',  4, a, 4,   d, e, t,   tw,   4,     inf)
 
 C     Figure out if the tridiagonal transform worked
       if (inf .eq. 0) then

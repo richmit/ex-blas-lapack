@@ -4,7 +4,7 @@
 !! @file      lapack_ifaces.f90
 !! @author    Mitch Richling http://www.mitchr.me/
 !! @brief     Interface block for the lapack routines we use.@EOL
-!! @keywords  blas linear algebra netlib
+!! @keywords  blas lapack numerical linear algebra matrix vector netlib
 !! @std       F2023
 !! @see       https://github.com/richmit/ex-blas-lapack/
 !! @copyright

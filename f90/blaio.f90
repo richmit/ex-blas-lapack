@@ -3,28 +3,26 @@
 !>
 !! @file      blaio.f90
 !! @author    Mitch Richling http://www.mitchr.me/
-!! @date      2025-09-17
-!! @version   VERSION
-!! @brief     Simple matrix/vector I/O for examples. @EOL
-!! @keywords  blas linear algebra netlib i/o blaio
+!! @brief     matrix/vector printing for examples. @EOL
+!! @keywords  blas lapack numerical linear algebra matrix vector netlib
 !! @std       F2023
 !! @see       https://github.com/richmit/ex-blas-lapack/
-!! @copyright 
+!! @copyright
 !!  @parblock
 !!  Copyright (c) 2025, Mitchell Jay Richling <http://www.mitchr.me/> All rights reserved.
-!!  
+!!
 !!  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following
 !!  conditions are met:
-!!  
+!!
 !!  1. Redistributions of source code must retain the above copyright notice, this list of conditions, and the following
 !!     disclaimer.
-!!  
+!!
 !!  2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions, and the following
 !!     disclaimer in the documentation and/or other materials provided with the distribution.
-!!  
+!!
 !!  3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products
 !!     derived from this software without specific prior written permission.
-!!  
+!!
 !!  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
 !!  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
 !!  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
@@ -41,15 +39,15 @@ module blaio
 
   implicit none (type, external)
   private
-  
-  interface sgeprt
-     module procedure :: sgeprtv, sgeprtm
-  end interface sgeprt
 
-  public :: sgeprtm, sgeprtv, sgeprt
+  interface dgeprt
+     module procedure :: dgeprtv, dgeprtm
+  end interface dgeprt
+
+  public :: dgeprtm, dgeprtv, dgeprt
 contains
 
-  subroutine sgeprtv(a, tag, wide_o, prec_o, ldel_o, rdel_o)
+  subroutine dgeprtv(a, tag, wide_o, prec_o, ldel_o, rdel_o)
     use blas_kinds, only: dp
     real(kind=dp),              intent(in) :: a(:)
     character(len=*),           intent(in) :: tag
@@ -61,7 +59,7 @@ contains
     ! Process optional arguments
     ldel = '['
     if (present(ldel_o))  ldel  = ldel_o
-    rdel = ']'            
+    rdel = ']'
     if (present(rdel_o))  rdel  = rdel_o
     wide = 9
     if (present(wide_o))  wide  = wide_o
@@ -70,9 +68,9 @@ contains
     ! Build format string & write vector
     write (fst, '("(1x,a",i0,",a,a,",i0,"f",i0,".",i0,",1x,a,a)")') len(tag), size(a, 1), wide, prec
     write (*, fst) tag, ldel, ldel, a, rdel, rdel
-  end subroutine sgeprtv
+  end subroutine dgeprtv
 
-  subroutine sgeprtm(a, tag, wide_o, prec_o, ldel_o, rdel_o, lidel_o, ridel_o)
+  subroutine dgeprtm(a, tag, wide_o, prec_o, ldel_o, rdel_o, lidel_o, ridel_o)
     use blas_kinds, only: dp
     real(kind=dp),              intent(in) :: a(:,:)
     character(len=*),           intent(in) :: tag
@@ -85,7 +83,7 @@ contains
     ! Process optional arguments
     ldel = '['
     if (present(ldel_o))  ldel  = ldel_o
-    rdel = ']'            
+    rdel = ']'
     if (present(rdel_o))  rdel  = rdel_o
     lidel = '['
     if (present(lidel_o)) lidel = lidel_o
@@ -100,7 +98,7 @@ contains
     do i=1,size(a, 1)
        if( (i == 1) .and. (i == size(a, 1)) ) then
           write (*, fst) tag, ldel, lidel, a(i, :), ridel, rdel
-       else if(i == 1) then 
+       else if(i == 1) then
           write (*, fst) tag, ldel, lidel, a(i, :), ridel, ' '
        else if(i == size(a, 1)) then
           write (*, fst) ' ', ' ',  lidel, a(i, :), ridel, rdel
@@ -108,5 +106,5 @@ contains
           write (*, fst) ' ', ' ',  lidel, a(i, :), ridel, ' '
        endif
     enddo
-  end subroutine sgeprtm
+  end subroutine dgeprtm
 end module blaio

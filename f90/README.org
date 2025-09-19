@@ -3,9 +3,9 @@
 I've included modules to help interface with ~BLAS~ & ~LAPACK~:
  - ~blas_kinds~ ::
    Constants for ~single~ && ~double~ reals
- - ~blas_ifaces~ :: 
+ - ~blas_ifaces~ ::
    Interface block for the ~BLAS~ routines used
- - ~lapack_ifaces~ :: 
+ - ~lapack_ifaces~ ::
    Interface block for the ~LAPACK~ routines used
 
 Modern Fortran ~BLAS~ & ~LAPACK~ Tips:

@@ -3,10 +3,8 @@
 !>
 !! @file      blas_ifaces.f90
 !! @author    Mitch Richling http://www.mitchr.me/
-!! @date      2025-09-17
-!! @version   VERSION
 !! @brief     Interface blocks for the BLAS routines we use.@EOL
-!! @keywords  blas linear algebra netlib
+!! @keywords  blas lapack numerical linear algebra matrix vector netlib
 !! @std       F2023
 !! @see       https://github.com/richmit/ex-blas-lapack/
 !! @copyright

@@ -3,24 +3,24 @@
 /**
  @file      blaio.c
  @author    Mitch Richling http://www.mitchr.me/
- @brief     matrix/vector I/O.@EOL
- @keywords  blas numerical linear algebra matrix vector
+ @brief     matrix/vector printing for examples. @EOL
+ @keywords  blas cblas claback lapack lapacke numerical linear linear algebra matrix vector netlib
  @std       C99
  @see       https://github.com/richmit/ex-blas-lapack/
- @copyright 
+ @copyright
   @parblock
   Copyright (c) 1993,2025, Mitchell Jay Richling <http://www.mitchr.me/> All rights reserved.
-  
+
   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-  
+
   1. Redistributions of source code must retain the above copyright notice, this list of conditions, and the following disclaimer.
-  
+
   2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions, and the following disclaimer in the documentation
      and/or other materials provided with the distribution.
-  
+
   3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software
      without specific prior written permission.
-  
+
   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
@@ -28,9 +28,6 @@
   LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
   DAMAGE.
   @endparblock
- @filedetails   
-
-  A few simple matrix/vector print/read functions useful for printing small test cases and debugging
 */
 /*******************************************************************************************************************************************************.H.E.**/
 
@@ -49,9 +46,9 @@ void printMatrixUbr(const enum CBLAS_ORDER order, /* CBLAS row order            
                     char *inStr, char *outStr,    /* "in" string, and "out" string                                   */
                     double minIn, double maxIn,   /* Min/Max values for "in" range.                                  */
                     int wide, int prec,           /* Width and precesion for floats                                  */
-                    int *rowPerm, int *colPerm,                                                                      
+                    int *rowPerm, int *colPerm,
                     char prtMode,                 /* b=bitmap, V=values, *=in/out)                                   */
-                    char *fileName, 
+                    char *fileName,
                     int maskMode,                 /* L=below diag, U=above diag, D=Diagnal, M=Mask, 0=NONE, \0=NONE  */
                     char *mask,
                     char *pad,                    /* Right pad string                                                */
@@ -109,7 +106,7 @@ void printMatrixUbr(const enum CBLAS_ORDER order, /* CBLAS row order            
   ldelLen = strlen(ldel);
   tagLen = strlen(tag);
   for(j=0; j<n; j++) {
-    if(j==0) 
+    if(j==0)
       printf("%s%s%s%s", tag, ldel, lidel, pad);
     else {
       for(k=0;k<tagLen;k++) printf(" ");
@@ -147,7 +144,7 @@ void printMatrixUbr(const enum CBLAS_ORDER order, /* CBLAS row order            
       if(prtMode == '*') {
         if( prtPerMask && (pVal >= minIn) && (pVal <= maxIn) )
           printf("%s%s", inStr, pad);
-        else 
+        else
           printf("%s%s", outStr, pad);
       } else {
         if(prtPerMask)

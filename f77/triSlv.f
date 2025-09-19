@@ -2,8 +2,8 @@ C -*- Mode:Fortran; Coding:us-ascii-unix; fill-column:72 -*-
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC.H.S.CC
 C @file      triSlv.f
 C @author    Mitch Richling http://www.mitchr.me/
-C @brief     Simple example illustrating strsv from BLAS.@EOL
-C @keywords  blas lapack netlib fortran linear system algebra
+C @brief     Solve a triangular system with STRSV. @EOL
+C @keywords  blas lapack numerical linear algebra matrix vector netlib
 C @std       F77 MIL-STD-1753
 C @see       https://github.com/richmit/ex-blas-lapack/
 C @copyright
@@ -41,11 +41,10 @@ C  OF THE POSSIBILITY OF SUCH DAMAGE.
 C  @endparblock
 C @filedetails
 C
-C  How to solve a triangular system.  BLAS supports upper and lower
-C  triangular systems, the matrix being transposed, and the diagonal
-C  being unitary or not.  This program illustrates the most common case
-C  when the matrix is upper triangular and has non-units on the
-C  diagonal.
+C  BLAS supports upper and lower triangular systems, the matrix being
+C  transposed, and the diagonal being unitary or not.  This program
+C  illustrates the most common case when the matrix is upper triangular
+C  and has non-units on the diagonal.
 C
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC.H.E.CC
 
@@ -61,11 +60,11 @@ C-----------------------------------------------------------------------
 
       external sgeprt
 
-      data m/3, 0, 0, 0, 0,
-     *       5, 8, 0, 0, 0,
-     *       7, 1, 5, 0, 0,
-     *       9, 4, 9, 4, 0,
-     *       1, 7, 3, 9, 5/
+      data m/3.0, 0.0, 0.0, 0.0, 0.0,
+     *       5.0, 8.0, 0.0, 0.0, 0.0,
+     *       7.0, 1.0, 5.0, 0.0, 0.0,
+     *       9.0, 4.0, 9.0, 4.0, 0.0,
+     *       1.0, 7.0, 3.0, 9.0, 5.0/
 
       data x/1, 2, 3, 4, 5/
 

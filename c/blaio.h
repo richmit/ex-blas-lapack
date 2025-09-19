@@ -3,7 +3,7 @@
 /**
  @file      blaio.h
  @author    Mitch Richling http://www.mitchr.me/
- @brief     Basic Linear Algebra I/O Subroutines.@EOL
+ @brief     matrix/vector printing for examples. @EOL
  @std       C99
  @see       https://github.com/richmit/ex-blas-lapack/
  @copyright 
@@ -27,10 +27,6 @@
   LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
   DAMAGE.
   @endparblock
- @filedetails   
-
-  Include file for the BLAIO (Basic Linear Algebra I/O Subroutines).  The BLAIO is intended to provide a very simple interface for printing and reading matrix
-  and vector quantities.  The library is primarily useful for debugging software making use of BLAS or higher level numerical linear algebra libraries.
 */
 /*******************************************************************************************************************************************************.H.E.**/
 

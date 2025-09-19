@@ -2,8 +2,8 @@ C -*- Mode:Fortran; Coding:us-ascii-unix; fill-column:72 -*-
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC.H.S.CC
 C @file      slvSys.f
 C @author    Mitch Richling http://www.mitchr.me/
-C @brief     Simple example illustrating SGESV from LAPACK.@EOL
-C @keywords  blas lapack netlib fortran linear system algebra
+C @brief     Solve a system of equations with DGESV. @EOL
+C @keywords  blas lapack numerical linear algebra matrix vector netlib
 C @std       F77 MIL-STD-1753
 C @see       https://github.com/richmit/ex-blas-lapack/
 C @copyright
@@ -41,9 +41,8 @@ C  OF THE POSSIBILITY OF SUCH DAMAGE.
 C  @endparblock
 C @filedetails
 C
-C  This little program illustrates how to use the SGESV from LAPACK to
-C  solve a system of equations.  This example is parallel to the C
-C  version so that the two may be easily compared.
+C  Demonstrates the DGESV routine from LAPACK to solve a system of
+C  equations.
 C
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC.H.E.CC
 
@@ -52,13 +51,13 @@ C-----------------------------------------------------------------------
 
       implicit none
 
-      real*4 a(4,4), b(4)
+      double precision a(4,4), b(4)
       integer pivs(4), inf
 
 C     Externals from the blaio library
-      external sgeprt
+      external dgeprt
 C     Externals from the LAPACK library
-      external sgesv
+      external dgesv
 
 C     Initialize the matrix a and the vector b
       data a/ 1, 2, 3, 4,
@@ -68,13 +67,13 @@ C     Initialize the matrix a and the vector b
       data b/ 1, 3, 5, 6/
 
 C     Print out the matrix and vector we start with
-      call sgeprt(4, 4, a, 'a=')
-      call sgeprt(1, 4, b, 'b=')
+      call dgeprt(4, 4, a, 'a=')
+      call dgeprt(1, 4, b, 'b=')
 
 C     Compute the solution
-      call sgesv(4, 1, a, 4, pivs, b, 4, inf)
+      call dgesv(4, 1, a, 4, pivs, b, 4, inf)
 
-C     Figure out if sgesv found a solution or not
+C     Figure out if dgesv found a solution or not
       if (inf .eq. 0) then
          write (*,*) 'Successful solution'
       else if (inf .lt. 0) then
@@ -89,8 +88,8 @@ C     Figure out if sgesv found a solution or not
       end if
 
 C     Print out the answer
-      call sgeprt(4, 4, a, 'a=')
-      call sgeprt(1, 4, b, 'b=')
+      call dgeprt(4, 4, a, 'a=')
+      call dgeprt(1, 4, b, 'b=')
       write(*,*) 'pivs=', pivs
 
       end
