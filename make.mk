@@ -55,12 +55,12 @@ CFLAGS   = -Wall
 # LP_LIB_NAME = -llapack -llapacke
 # LP_INC_PATH =
 
-# LAPACK/BLAS compile/link options for MSYS2 using the mingw64 version of OpenBLAS on MS Windows:
+# LAPACK/BLAS compile/link options for ucrt64 using the mingw64 version of OpenBLAS on MS Windows:
 BL_LIB_PATH =
 BL_LIB_NAME = -lopenblas
-BL_INC_PATH = -I/mingw64/include/OpenBLAS
+BL_INC_PATH = -I/ucrt64/include/OpenBLAS
 LP_LIB_PATH =
-LP_LIB_NAME = -llapack
+LP_LIB_NAME = -llapack -llapacke
 LP_INC_PATH =
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------
