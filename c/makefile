@@ -31,7 +31,7 @@
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------
 #         Blas                     Lapack
-TARGETS = blas1 blas2 blas3 blas2b slvSys
+TARGETS = blas1 blas2 blas3 blas2b slvSys slvPly
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------
 include ../make.mk
@@ -51,3 +51,7 @@ blas3 : blas3.c blaio.c blaio.h
 
 slvSys : slvSys.c blaio.c blaio.h
 	$(CC) $(CFLAGS) ${BL_INC_PATH} $(LP_INC_PATH) slvSys.c blaio.c -lm $(LP_LIB_NAME) $(BL_LIB_NAME) -o slvSys
+
+
+slvPly : slvPly.c blaio.c blaio.h
+	$(CC) $(CFLAGS) ${BL_INC_PATH} $(LP_INC_PATH) slvPly.c blaio.c -lm $(LP_LIB_NAME) $(BL_LIB_NAME) -o slvPly
