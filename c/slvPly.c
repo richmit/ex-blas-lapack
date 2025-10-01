@@ -1,7 +1,7 @@
 /* -*- Mode:C; Coding:us-ascii-unix; fill-column:158 -*- */
 /*******************************************************************************************************************************************************.H.S.**/
 /**
- @file      slvSys.c
+ @file      slvPly.c
  @author    Mitch Richling http://www.mitchr.me/
  @brief     Eigenvalues of a complex matrix. @EOL
  @keywords  blas cblas claback lapack lapacke numerical linear linear algebra matrix vector netlib
