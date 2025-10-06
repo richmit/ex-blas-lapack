@@ -1,14 +1,14 @@
 # -*- Mode:make; Coding:us-ascii-unix; fill-column:158 -*-
 #########################################################################################################################################################.H.S.##
 ##
-# @file      make.mk
+# @file      makefile
 # @author    Mitch Richling http://www.mitchr.me/
-# @brief     Setup variables for the development envionrment.@EOL
+# @brief     Build C++ examples.@EOL
 # @std       GNUmake
 # @see       https://github.com/richmit/ex-blas-lapack/
 # @copyright
 #  @parblock
-#  Copyright (c) 1997,2014,2025, Mitchell Jay Richling <http://www.mitchr.me/> All rights reserved.
+#  Copyright (c) 2025, Mitchell Jay Richling <http://www.mitchr.me/> All rights reserved.
 #
 #  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 #
@@ -27,49 +27,15 @@
 #  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
 #  DAMAGE.
 #  @endparblock
-# @filedetails
-#
-#  THis is a GNUmake include file used to define standard targets and set variables for the development enviornment.
-#
 #########################################################################################################################################################.H.E.##
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------
-.PHONY: all clean
+#         Lapack
+TARGETS = slvPly
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------
-# Put your compiler and basic compile options here
-
-FC       = gfortran
-CC       = gcc
-CXX      = g++
-FFLAGS   = -Wall
-CFLAGS   = -Wall
-CXXFLAGS = -Wall
+include ../make.mk
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------
-# Configure variables for libraries and include paths here.
-
-# # LAPACK/BLAS compile/link options for generic linux:
-# BL_LIB_PATH =
-# BL_LIB_NAME = -lblas
-# BL_INC_PATH =
-# LP_LIB_PATH =
-# LP_LIB_NAME = -llapack -llapacke
-# LP_INC_PATH =
-
-# LAPACK/BLAS compile/link options for MSYS2 using the ucrt64 version of OpenBLAS on MS Windows:
-BL_LIB_PATH =
-BL_LIB_NAME = -lopenblas
-BL_INC_PATH = -I/ucrt64/include/OpenBLAS
-LP_LIB_PATH =
-LP_LIB_NAME = -llapack -llapacke
-LP_INC_PATH =
-
-#---------------------------------------------------------------------------------------------------------------------------------------------------------------
-# These are standard targets each make file supports.
-
-all : $(TARGETS)
-	@echo Make Complete
-
-clean :
-	rm -rf *~ *.bak $(TARGETS) *.o *.obj *.exe *.EXE a.out *.OBJ *.O *.MOD *.mod
+slvPly : slvPly.cpp
+	$(CXX) $(CXXFLAGS) ${BL_INC_PATH} $(LP_INC_PATH) slvPly.cpp -lm $(LP_LIB_NAME) $(BL_LIB_NAME) -o slvPly

@@ -1,0 +1,8 @@
+* ~LAPACK~ example in ~C++~
+
+The example here is very similar to ~slvPly.c~, but it uses more
+idiomatic C++.
+
+Have fun!
+
+-mitch

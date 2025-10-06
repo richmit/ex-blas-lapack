@@ -1,6 +1,6 @@
-* =BLAS= & ~LAPACK~ examples in ~C~, ~FORTRAN 77~, & Modern ~Fortran~
+* =BLAS= & ~LAPACK~ examples in ~C~, ~c++~, ~FORTRAN 77~, & Modern ~Fortran~
 
-Example programs in C, modern Fortran, and FORTRAN 77 to get you
+Example programs in C, C++, modern Fortran, and FORTRAN 77 to get you
 started with the BLAS/CBLAS and LAPACK/CLAPACK/LAPACKE APIs commonly
 used for scientific programming tasks.
 

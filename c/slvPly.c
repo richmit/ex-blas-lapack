@@ -74,46 +74,26 @@ int main(int argc, char **argv) {
   for(int i=1;i<=n;i++)
     a[(n-i)*n+(n-1)] = -p[i]/p[0];
 
-  /* Print out p */
-  printf("\nThe polynomial p:");
-  for(int i=0;i<=n;i++) {
-    printf("(%2.1g, %2.1g) * x^%d %s ", lapack_complex_double_real(p[i]), lapack_complex_double_imag(p[i]), n-i, (i==n?"":"+"));
-  }
-
-  /* Print out a */
-  printf("\n\nThe matrix a (companion matrix of p):\n");
-  for(int i=0;i<n;i++) {
-    for(int j=0;j<n;j++) {
-      printf("(%2.1g, %2.1g) ", lapack_complex_double_real(a[i*n+j]), lapack_complex_double_imag(a[i*n+j]));
-    }
-    printf("\n");
-  }
-  printf("\n");
-
   /* Query the optimal value for lwork.  */
   work  = (lapack_complex_double *)malloc(sizeof(lapack_complex_double)*1);
   inf = LAPACKE_zgeev_work(LAPACK_COL_MAJOR, 'N', 'N', n, a, lda, w, vl, ldvl, vr, ldvr, work, lwork, rwork);
-  printf("inf: %d\n", inf);
   if(inf != 0) {
     printf("Solution Error (lwork query): %d\n", inf);
     exit(1);
-  }
-  printf("Optimal lwork value %f\n\n", lapack_complex_double_real(work[0]));
+  } /* end if */
 
+  /* Allocate work & set lwork */
+  printf("Optimal lwork value %f\n\n", lapack_complex_double_real(work[0]));
   lwork = (int)(lapack_complex_double_real(work[0])) + 1;
   free(work);
   work  = (lapack_complex_double *)malloc(sizeof(lapack_complex_double)*lwork);
 
   /* The "work" version of LAPACKE version of zgeev. */
   inf = LAPACKE_zgeev_work(LAPACK_COL_MAJOR, 'N', 'N', n, a, lda, w, vl, ldvl, vr, ldvr, work, lwork, rwork);
-
-  printf("inf: %d\n", inf);
-  if(inf == 0) {
-    printf("Successful Solution\n");
-  } else {
+  if(inf != 0) {
     printf("Solution Error (eigenvalue): %d\n", inf);
     exit(1);
-  } /* end if/else */
+  } /* end if */
 
   /* Print out the eigenvalues -- one per line */
   printf("\nThe Roots of p (the eigenvalues of a)\n");
