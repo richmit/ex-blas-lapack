@@ -1,7 +1,7 @@
 ! -*- Mode:F90; Coding:us-ascii-unix; fill-column:129 -*-
 !.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!.H.S.!!
 !>
-!! @file      symEig.f90
+!! @file      genEig.f90
 !! @author    Mitch Richling http://www.mitchr.me/
 !! @brief     Eigenvalues via dsytrd & dgeev. @EOL
 !! @keywords  blas lapack numerical linear algebra matrix vector netlib
